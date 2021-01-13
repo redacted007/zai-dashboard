@@ -1,10 +1,10 @@
-# zai dashboard
+# ZAI v2 dashboard
 
 A simple dashboard for interacting with the Zai protocol
 
 Forked and modified from [dollar-dashboard](https://github.com/emptysetsquad/dollar-dashboard)
 
-The current build of the dashboard can be accessed at: [https://zai.finance](https://zai.finance)
+The current build of the dashboard can be accessed at: [https://zai.fi](https://zai.fi)
 
 ## prerequisites
 
