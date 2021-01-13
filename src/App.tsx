@@ -5,7 +5,7 @@ import styled from '@emotion/styled'
 
 import { RecoilRoot } from 'recoil'
 
-import { useThemeName } from './components/Theme'
+import { coolStuff, useThemeName } from './components/Theme'
 import Styles from './components/Styles'
 import Routes from './components/Routes'
 import { Main, SiteWrapper } from './components/Layout'
@@ -38,74 +38,102 @@ const OverlayContainer = styled.div`
   background: rgba(0, 0, 0, 0.8);
 `
 
+const ColorRush = styled.div`
+  ${coolStuff}
+
+  width: 100%;
+  height: 100%;
+
+  & > * {
+    position: relative;
+    z-index: 1;
+  }
+`
+
 const Overlay = () => {
   return (
     <OverlayContainer>
       <ModalBox
         css={css`
-          padding: ${rem(32)} ${rem(48)} ${rem(60)};
           width: 100%;
           max-width: ${rem(520)};
-
-          display: flex;
-          flex-direction: column;
-
-          align-items: center;
         `}
       >
-        <h4
-          css={css`
-            margin-bottom: ${rem(60)};
-          `}
-        >
-          Version 2 is coming
-        </h4>
+        <ColorRush>
+          <div
+            css={css`
+              padding: ${rem(24)} ${rem(24)} ${rem(24)};
+            `}
+          >
+            <div
+              css={css`
+                background-color: #fff;
+                border-radius: ${rem(8)};
+                width: 100%;
+                display: flex;
+                flex-direction: column;
 
-        <Countdown
-          date={1611007200 * 1000}
-          renderer={({ days, hours, minutes, seconds }) => {
-            return (
-              <h3
+                align-items: center;
+
+                padding: ${rem(24)} ${rem(24)} ${rem(24)};
+              `}
+            >
+              <h4
                 css={css`
-                  width: 100%;
-                  display: flex;
-                  justify-content: space-around;
-
-                  font-size: ${rem(40)};
-
                   margin-bottom: ${rem(60)};
                 `}
               >
-                <span>{days} D</span>
-                <span>{hours} H</span>
-                <span>{minutes} M</span>
-                <span>{seconds} S</span>
-              </h3>
-            )
-          }}
-        />
+                Version 2 is coming
+              </h4>
 
-        <h2
-          css={css`
-            margin-bottom: ${rem(12)};
-            line-height: 1.2;
-            font-size: ${rem(24)};
-          `}
-        >
-          100:1 Swap
-        </h2>
+              <Countdown
+                date={1611007200 * 1000}
+                renderer={({ days, hours, minutes, seconds }) => {
+                  return (
+                    <h3
+                      css={css`
+                        width: 100%;
+                        display: flex;
+                        justify-content: space-around;
 
-        <h2
-          css={css`
-            margin-bottom: ${rem(48)};
-            line-height: 1.2;
-            font-size: ${rem(24)};
-          `}
-        >
-          5 Day Bootstrap
-        </h2>
+                        font-size: ${rem(52)};
 
-        <p>Swap avaialble soon</p>
+                        margin-bottom: ${rem(60)};
+                      `}
+                    >
+                      <span>{days}D</span>
+                      <span>{hours}H</span>
+                      <span>{minutes}M</span>
+                      <span>{seconds}S</span>
+                    </h3>
+                  )
+                }}
+              />
+
+              <h2
+                css={css`
+                  margin-bottom: ${rem(16)};
+                  line-height: 1.2;
+                  font-size: ${rem(24)};
+                `}
+              >
+                100:1 Swap
+              </h2>
+
+              <h2
+                css={css`
+                  margin-bottom: ${rem(48)};
+                  line-height: 1.2;
+                  font-size: ${rem(24)};
+                `}
+              >
+                5 Day Bootstrap
+              </h2>
+
+              <p>Swap available soon</p>
+            </div>
+          </div>
+        </ColorRush>
       </ModalBox>
     </OverlayContainer>
   )
