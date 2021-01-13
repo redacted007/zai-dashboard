@@ -91,7 +91,7 @@ const Clock = () => {
       </p>
 
       <Countdown
-        date={1611007200 * 1000}
+        date={1611014400 * 1000}
         renderer={({ days, hours, minutes, seconds }) => {
           return (
             <p
@@ -145,6 +145,17 @@ const Clock = () => {
       >
         5 day initial bootstrap
       </p>
+
+      <p
+        css={css`
+          opacity: 0.92;
+          font-size: ${rem(12)};
+
+          margin-top: ${rem(64)};
+        `}
+      >
+        Permissionless swap of ZAI v1 for ZAI v2 (100:1) available soon
+      </p>
     </div>
   )
 }
@@ -192,17 +203,6 @@ const Overlay = () => {
               `}
             >
               <Clock></Clock>
-
-              <p
-                css={css`
-                  opacity: 0.92;
-                  font-size: ${rem(12)};
-
-                  margin-top: ${rem(64)};
-                `}
-              >
-                Permissionless swap of ZAI v1 for ZAI v2 (100:1) available soon
-              </p>
             </div>
           </div>
         </ColorRush>
