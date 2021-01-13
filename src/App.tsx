@@ -57,6 +57,8 @@ const Overlay = () => {
         css={css`
           width: 100%;
           max-width: ${rem(520)};
+
+          overflow: hidden;
         `}
       >
         <ColorRush>
