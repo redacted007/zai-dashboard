@@ -15,6 +15,7 @@
     "@web3-react/injected-connector": "^6.0.7",
     "@web3-react/walletconnect-connector": "^6.1.6",
     "bignumber.js": "^9.0.0",
+    "react-countdown": "^2.3.1",
     "emotion-theming": "^11.0.0",
     "moment": "^2.25.3",
     "polished": "^4.0.5",
