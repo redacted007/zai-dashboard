@@ -36,7 +36,7 @@ const epochAtom = atom({
 
 const poolAddressAtom = atom({
   key: 'PoolAddress',
-  default: '0xf1a6bed23411d709069ddbd55a04700f9493476f',
+  default: '0x326e906a28cd7ff56cce6a84a8043786b8762cdf',
 })
 
 export const totalTokensAtom = atom({

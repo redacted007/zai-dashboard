@@ -1,5 +1,10 @@
 import React from 'react'
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from 'react-router-dom'
 
 import Governance from './Governance'
 
@@ -15,6 +20,7 @@ import CouponsModal from './CouponsModal'
 import LiquidityModal from './LiquidityModal'
 import RewardsModal from './RewardsModal'
 import ProposeModal from './ProposeModal'
+import PreOverlay from './PreOverlay'
 
 import ConnectedRoute from './ConnectedRoute'
 
@@ -25,6 +31,7 @@ import {
   useUpdateUserPoolData,
   useUpdateZaiData,
 } from '../hooks'
+import SwapModal from './SwapModal'
 
 const ZaiUpdater = () => {
   useUpdateZaiData()
@@ -98,9 +105,19 @@ const MainRoutes = () => {
         <Route path="/">
           <Dashboard />
 
+          <Route path="/welcome">
+            <PreOverlay />
+          </Route>
+
           <Route path="/connect">
             <ConnectModal />
           </Route>
+
+          <Route path="/swap">
+            <SwapModal />
+          </Route>
+
+          <Redirect to="/welcome" />
         </Route>
       </Switch>
     </>

@@ -138,7 +138,7 @@ export const ModalBox = styled.div<Themed>`
   box-shadow: 0 ${rem(8)} ${rem(24)} rgba(255, 255, 255, 0.05);
 `
 
-const ModalBackground = styled.div`
+export const ModalBackground = styled.div`
   position: absolute;
   width: 100%;
   height: 100%;
@@ -148,11 +148,13 @@ const ModalBackground = styled.div`
   cursor: pointer;
 `
 
-const Modal = ({ children }) => {
+const Modal = ({ children, onClick = undefined }) => {
   const history = useHistory()
-  const onClickOut = () => {
-    history.push('/')
-  }
+  const onClickOut = onClick
+    ? onClick
+    : () => {
+        history.push('/dashboard')
+      }
   return (
     <ModalContainer>
       <ModalBackground onClick={onClickOut} />

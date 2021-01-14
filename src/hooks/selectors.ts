@@ -19,6 +19,8 @@ import {
   userPoolClaimableAtom,
   userPoolStatusAtom,
   userPoolFluidUntilAtom,
+  oldZaiBalanceAtom,
+  oldZaiAllowanceAtom,
 } from './user'
 import { totalBondedAtom, totalTokensAtom, poolTotalBondedAtom } from './zai'
 
@@ -46,6 +48,8 @@ const userDataSelector = selector({
   key: 'UserData',
   get: ({ get }) => {
     return {
+      oldZaiBalance: get(oldZaiBalanceAtom),
+      oldZaiAllowance: get(oldZaiAllowanceAtom),
       balance: get(balanceAtom),
       allowance: get(allowanceAtom),
       bonded: get(bondedAtom),

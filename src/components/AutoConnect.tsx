@@ -3,7 +3,7 @@ import { useWeb3React } from '@web3-react/core'
 
 import connectors from '../utils/connectors'
 
-const AUTO_CONNECT = false
+const AUTO_CONNECT = true
 
 const AutoConnect = () => {
   const w3ctx = useWeb3React()
