@@ -1,7 +1,14 @@
 import React from 'react'
 import styled from '@emotion/styled'
 
-import { Col, Spacer, Seperator, Flex } from '../../components/Elements'
+import {
+  Col,
+  Spacer,
+  Seperator,
+  Flex,
+  P,
+  LinkButton,
+} from '../../components/Elements'
 
 import Page from '../../components/Page'
 
@@ -10,6 +17,7 @@ import SupplyPanel from './SupplyPanel'
 import LiquidityPanel from './LiquidityPanel'
 
 import { mq } from '../../styles'
+import Panel from '../Panel'
 
 const TwoCol = styled(Flex)`
   ${mq.mobile} {
@@ -20,6 +28,21 @@ const TwoCol = styled(Flex)`
 const Dashboard = () => {
   return (
     <Page>
+      <TwoCol>
+        <Panel heading="Swap">
+          <TwoCol>
+            <Col>
+              <P>Swap ZAI for ZAIv2</P>
+            </Col>
+            <Col>
+              <LinkButton to="/dashboard/swap">Manage Swap</LinkButton>
+            </Col>
+          </TwoCol>
+        </Panel>
+      </TwoCol>
+
+      <Spacer size={30} />
+
       <TwoCol>
         <Col>
           <SupplyPanel />

@@ -2,13 +2,14 @@ import { useEffect, useState } from 'react'
 // import { getEpoch } from '../utils/infura'
 // import { ZAIS } from '../constants/tokens'
 
-const epochStart = 1608422400
+const epochStart = 1611014400
 const epochPeriod = 1800
 
 const epochformatted = () => {
   const unixTimeSec = Math.floor(Date.now() / 1000)
   const diff = unixTimeSec - epochStart
-  const epoch = Math.floor(diff / epochPeriod)
+
+  const epoch = Math.max(Math.floor(diff / epochPeriod), 0)
   const rest = diff % epochPeriod
 
   const epochMinute = Math.floor(rest / 60)

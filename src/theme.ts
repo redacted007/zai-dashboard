@@ -87,11 +87,22 @@ export const defaultColorsBW = [
 
 export const colorsBW = [
   {
-    start: '#e8e8e8',
+    start: '#0a2e38',
     end: '#ddd',
   },
   {
-    start: '#dadacc',
+    start: '#0f3854',
     end: '#eee',
+  },
+]
+
+export const colorsDarkBW = [
+  {
+    start: '#166278',
+    end: '#222',
+  },
+  {
+    start: '#0b466e',
+    end: '#111',
   },
 ]

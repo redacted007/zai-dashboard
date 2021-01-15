@@ -17,7 +17,13 @@ if ((window as any).ethereum !== undefined) {
   // eslint-disable-next-line no-undef
   web3 = new Web3((window as any).ethereum)
 } else {
-  web3 = new Web3(new Web3.providers.HttpProvider('https://mainnet.infura.io/'))
+  try {
+    web3 = new Web3(
+      new Web3.providers.HttpProvider('https://mainnet.infura.io/'),
+    )
+  } catch (err) {
+    console.log(err)
+  }
 }
 
 export const getLibrary = (provider, connector) => {

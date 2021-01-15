@@ -18,7 +18,7 @@ import {
   getTokenAllowance,
   getTokenBalance,
 } from '../utils/infura'
-import { DAI, UNI, ZAI, ZAIS } from '../constants/tokens'
+import { DAI, OLDZAI, UNI, ZAI, ZAIS } from '../constants/tokens'
 import {
   ownership as calculateOwnership,
   toTokenUnitsBN,
@@ -30,6 +30,15 @@ export const useUser = () => {
   const { account } = useWeb3React()
   return account
 }
+
+export const oldZaiBalanceAtom = atom({
+  key: 'OldZaiUserBalance',
+  default: new BigNumber(0),
+})
+export const oldZaiAllowanceAtom = atom({
+  key: 'OldZaiUserAllowance',
+  default: new BigNumber(0),
+})
 
 export const balanceAtom = atom({
   key: 'UserBalance',
@@ -95,6 +104,8 @@ const useUpdater = (updater, timeout = 15000, deps = []) => {
 export const useUpdateUserData = () => {
   const user = useUser()
 
+  const setOldZaiBalance = useSetRecoilState(oldZaiBalanceAtom)
+  const setOldZaiAllowance = useSetRecoilState(oldZaiAllowanceAtom)
   const setBalance = useSetRecoilState(balanceAtom)
   const setAllowance = useSetRecoilState(allowanceAtom)
   const setBonded = useSetRecoilState(bondedAtom)
@@ -112,7 +123,9 @@ export const useUpdateUserData = () => {
       }
 
       const [
+        oldZaiBalanceStr,
         balanceStr,
+        oldZaiAllowanceStr,
         allowanceStr,
         staged,
         bonded,
@@ -121,7 +134,9 @@ export const useUpdateUserData = () => {
         lockedUntil,
         userStake,
       ] = await Promise.all([
+        getTokenBalance(OLDZAI.addr, user),
         getTokenBalance(ZAI.addr, user),
+        getTokenAllowance(OLDZAI.addr, user, ZAI.addr),
         getTokenAllowance(ZAI.addr, user, ZAIS.addr),
         getBalanceOfStaged(ZAIS.addr, user),
         getBalanceBonded(ZAIS.addr, user),
@@ -133,6 +148,8 @@ export const useUpdateUserData = () => {
       ])
 
       if (!isCancelled) {
+        setOldZaiBalance(toTokenUnitsBN(oldZaiBalanceStr, ZAI.decimals))
+        setOldZaiAllowance(toTokenUnitsBN(oldZaiAllowanceStr, ZAI.decimals))
         setBalance(toTokenUnitsBN(balanceStr, ZAI.decimals))
         setAllowance(new BigNumber(allowanceStr))
         setStaged(toTokenUnitsBN(staged, ZAI.decimals))

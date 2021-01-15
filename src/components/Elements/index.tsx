@@ -132,6 +132,7 @@ export const A = styled(Text)``.withComponent('a')
 
 interface FlexProps {
   column?: boolean
+  css?: any
 }
 
 export const Flex = styled.div<FlexProps>`

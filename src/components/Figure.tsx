@@ -7,7 +7,7 @@ import { useThemeName } from './Theme'
 
 interface FigureProps {
   num: BigNumber
-  unit?: string
+  unit?: string | React.ReactNode
   round?: number
   tooltip?: any
 }

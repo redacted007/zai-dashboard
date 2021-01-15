@@ -19,6 +19,7 @@ const uniswapRouterAbi = require('../constants/abi/UniswapV2Router02.json')
 const erc20Abi = require('../constants/abi/ERC20.json')
 const daoAbi = require('../constants/abi/Implementation.json')
 const poolAbi = require('../constants/abi/Pool.json')
+const zaiv2Abi = require('../constants/abi/Dollar.json')
 
 const DEADLINE_FROM_NOW = 60 * 15
 const UINT256_MAX =
@@ -69,16 +70,38 @@ export const checkConnectedAndGetAddress = async () => {
   return addresses[0]
 }
 
+const normalizeWeb3Number = (value) => new BigNumber(value).toFixed()
+
 /**
  * ERC20 Utilities
  */
 type TxCallback = (string) => void
 
 export const approve = async (tokenAddr, spender, cb?: TxCallback) => {
+  await approveSome(tokenAddr, spender, UINT256_MAX, cb)
+}
+
+export const approveSome = async (
+  tokenAddr,
+  spender,
+  amount,
+  cb?: TxCallback,
+) => {
   const account = await checkConnectedAndGetAddress()
   const oToken = new web3.eth.Contract(erc20Abi, tokenAddr)
   await oToken.methods
-    .approve(spender, UINT256_MAX)
+    .approve(spender, normalizeWeb3Number(amount))
+    .send({ from: account })
+    .on('transactionHash', (hash) => {
+      cb ? cb(hash) : notify.hash(hash)
+    })
+}
+
+export const burnAndSwap = async (tokenAddr, cb?: TxCallback) => {
+  const account = await checkConnectedAndGetAddress()
+  const zai = new web3.eth.Contract(zaiv2Abi, tokenAddr)
+  await zai.methods
+    .burnAndSwap(account)
     .send({ from: account })
     .on('transactionHash', (hash) => {
       cb ? cb(hash) : notify.hash(hash)

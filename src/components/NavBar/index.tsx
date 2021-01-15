@@ -116,7 +116,7 @@ function NavBar() {
         </Link>
       </Left>
       <Center>
-        <StyledNavLink to="/" selected={!isGovernance}>
+        <StyledNavLink to="/dashboard" selected={!isGovernance}>
           Dashboard
         </StyledNavLink>
         <StyledNavLink to="/governance" selected={isGovernance}>

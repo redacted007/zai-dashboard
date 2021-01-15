@@ -14,12 +14,13 @@ import {
 import { Wrapper } from '../../components/Layout'
 
 import { formatBN } from '../../utils/number'
-import { useEpoch, usePrices, useTokenData } from '../../hooks'
+import { usePrices, useTokenData } from '../../hooks'
 import BigNumber from 'bignumber.js'
 import { LogoMark } from '../../components/Logo'
 import { Themed, ThemeProps } from '../../components/Theme'
 import { DaiSymbol } from '../../components/Icons'
 import Figure from '../../components/Figure'
+import Countdown from 'react-countdown'
 
 const Title = styled<Themed>(Bold)`
   color: ${(props) => transparentize(0.3, props.theme.textColor)};
@@ -66,8 +67,9 @@ const Block = styled(Col)`
 `
 
 const EpochTime = () => {
-  const { epochTime } = useEpoch()
-  return <span>{epochTime}</span>
+  // const { epochTime } = useEpoch()
+  // return <span>{epochTime}</span>
+  return <Countdown date={1611014400 * 1000} />
 }
 
 const DashboardOverview = () => {
