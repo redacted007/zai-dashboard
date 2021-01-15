@@ -29,7 +29,7 @@ import { LiquidityThemeProvider } from '../../components/Theme'
 import { transparentize } from 'polished'
 import Figure, { FigurePercent } from '../../components/Figure'
 import { POOL_EXIT_LOCKUP_EPOCHS } from '../../constants/values'
-import { UNI } from '../../constants/tokens'
+import { DAI, ZAI } from '../../constants/tokens'
 
 const CoolPanel = styled(PanelBody)<Themed>`
   background-image: linear-gradient(
@@ -53,6 +53,7 @@ const LiquidityPanel = () => {
     epochYield,
     cycleYield,
   } = useUserPoolData()
+
   return (
     <LiquidityThemeProvider>
       <Panel>
@@ -80,7 +81,6 @@ const LiquidityPanel = () => {
 
             <Spacer />
 
-            {/* uniBalance */}
             <TableRow
               left={
                 <React.Fragment>
@@ -92,7 +92,7 @@ const LiquidityPanel = () => {
                   >
                     (
                     <a
-                      href={`https://info.uniswap.org/pair/${UNI.addr}`}
+                      href={`https://app.uniswap.org/#/add/${DAI.addr}/${ZAI.addr}`}
                       target="_blank"
                       rel="noopener noreferrer"
                     >

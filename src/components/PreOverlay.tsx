@@ -9,7 +9,7 @@ import { coolStuff } from './Theme'
 
 import { ModalBox, ModalBackground } from './Modal'
 
-import { BigButton, Spacer } from './Elements'
+import { LinkButton, Spacer } from './Elements'
 
 const OverlayContainer = styled.div`
   position: fixed;
@@ -170,9 +170,9 @@ const Overlay = () => {
             >
               <Clock />
               <Spacer size={40} />
-              <BigButton onClick={() => history.push('/swap')}>
+              <LinkButton to="/dashboard/swap">
                 Swap ZAI v1 for ZAI v2 (100:1)
-              </BigButton>
+              </LinkButton>
               <Spacer />
             </div>
           </div>

@@ -57,32 +57,24 @@ function Footer() {
       <Flex>
         <FooterLink
           icon={<i className="fab fa-twitter" />}
-          href={'https://www.twitter.com/zaifinance'}
+          href={'https://twitter.com/V2Zai'}
         />
         <FooterLink
           icon={<i className="fab fa-medium" />}
-          href={'https://www.medium.com/@zaifinance'}
+          href={'https://r3d4ct3d.medium.com'}
         />
         <FooterLink
           icon={<i className="fab fa-github" />}
-          href={'https://www.github.com/zaifinance/zai-protocol'}
+          href={'https://www.github.com/redacted007/zai-protocol'}
         />
         <FooterLink
           icon={<i className="fab fa-telegram" />}
-          href={'https://t.me/ZAIcommunitygroup'}
+          href={'https://t.me/zaicommunity'}
         />
         <FooterLink
-          icon={<i className="fab fa-discord" />}
-          href={'https://discord.gg/39gJDPdeke'}
+          icon={<i className="fab fa-youtube" />}
+          href={'https://www.youtube.com/channel/UCE1c0g5SGIpuQWAnoK6NYjA'}
         />
-
-        {/* <div>
-            Made with{' '}
-            <span role="img" aria-labelledby="heartbreak">
-              💔️
-            </span>{' '}
-            by the Zero Collateral Devs
-          </div> */}
       </Flex>
       <div>
         <A

@@ -14,7 +14,7 @@ import AutoConnect from './components/AutoConnect'
 import { getLibrary } from './utils/infura'
 
 import { makeTheme } from './components/Theme'
-import { lightTheme, darkTheme, colorsElectricBW, colorsBW } from './theme'
+import { lightTheme, darkTheme, colorsBW, colorsDarkBW } from './theme'
 
 const AppRoot = () => {
   const [themeName] = useThemeName()
@@ -24,7 +24,7 @@ const AppRoot = () => {
       ? makeTheme(lightTheme, {
           colorPairs: colorsBW,
         })
-      : makeTheme(darkTheme, { colorPairs: colorsElectricBW })
+      : makeTheme(darkTheme, { colorPairs: colorsDarkBW })
 
   return (
     <ThemeProvider theme={theme}>

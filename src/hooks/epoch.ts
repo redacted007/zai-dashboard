@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 // import { getEpoch } from '../utils/infura'
 // import { ZAIS } from '../constants/tokens'
 
-const epochStart = 1608422400
+const epochStart = 1611014400
 const epochPeriod = 1800
 
 const epochformatted = () => {

@@ -95,3 +95,14 @@ export const colorsBW = [
     end: '#eee',
   },
 ]
+
+export const colorsDarkBW = [
+  {
+    start: '#166278',
+    end: '#222',
+  },
+  {
+    start: '#0b466e',
+    end: '#111',
+  },
+]

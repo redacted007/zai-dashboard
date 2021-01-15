@@ -77,6 +77,10 @@ const MainRoutes = () => {
         <Route path="/dashboard">
           <Dashboard />
           <Switch>
+            <Route path="/dashboard/swap">
+              <SwapModal />
+            </Route>
+
             <ConnectedRoute path="/dashboard/dao">
               <SupplyThemeProvider>
                 <DAOModal />
@@ -105,19 +109,17 @@ const MainRoutes = () => {
         <Route path="/">
           <Dashboard />
 
-          <Route path="/welcome">
-            <PreOverlay />
-          </Route>
+          <Switch>
+            <Route path="/welcome">
+              <PreOverlay />
+            </Route>
 
-          <Route path="/connect">
-            <ConnectModal />
-          </Route>
+            <Route path="/connect">
+              <ConnectModal />
+            </Route>
 
-          <Route path="/swap">
-            <SwapModal />
-          </Route>
-
-          <Redirect to="/welcome" />
+            <Redirect to="/welcome" />
+          </Switch>
         </Route>
       </Switch>
     </>
