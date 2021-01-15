@@ -29,6 +29,7 @@ import { LiquidityThemeProvider } from '../../components/Theme'
 import { transparentize } from 'polished'
 import Figure, { FigurePercent } from '../../components/Figure'
 import { POOL_EXIT_LOCKUP_EPOCHS } from '../../constants/values'
+import { UNI } from '../../constants/tokens'
 
 const CoolPanel = styled(PanelBody)<Themed>`
   background-image: linear-gradient(
@@ -91,7 +92,7 @@ const LiquidityPanel = () => {
                   >
                     (
                     <a
-                      href="https://info.uniswap.org/pair/0x323e054a6dd8762011d60993f51e23e2096b221f"
+                      href={`https://info.uniswap.org/pair/${UNI.addr}`}
                       target="_blank"
                       rel="noopener noreferrer"
                     >

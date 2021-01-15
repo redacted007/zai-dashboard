@@ -28,6 +28,7 @@ import StatusBar from '../../components/StatusBar'
 import { useHasWeb3, useUser, useUserData } from '../../hooks'
 import { SupplyThemeProvider } from '../../components/Theme'
 import Figure, { FigurePercent } from '../../components/Figure'
+import { UNI } from '../../constants/tokens'
 
 const CoolPanel = styled(PanelBody)<Themed>`
   background-image: linear-gradient(
@@ -83,7 +84,7 @@ const SupplyPanel = () => {
                   >
                     (
                     <a
-                      href="https://info.uniswap.org/pair/0x323e054a6dd8762011d60993f51e23e2096b221f"
+                      href={`https://info.uniswap.org/pair/${UNI.addr}`}
                       target="_blank"
                       rel="noopener noreferrer"
                     >
