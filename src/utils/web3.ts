@@ -70,7 +70,7 @@ export const checkConnectedAndGetAddress = async () => {
   return addresses[0]
 }
 
-const normalizeWeb3Number = (value) => new BigNumber(value).toString()
+const normalizeWeb3Number = (value) => new BigNumber(value).toFixed()
 
 /**
  * ERC20 Utilities

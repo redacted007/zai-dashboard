@@ -151,7 +151,7 @@ const SwapModal = () => {
           <ActionLabel label={label} value={formValue} />
         </BigButton>
 
-        <Spacer size={6} />
+        <Spacer size={10} />
         <Flex
           css={css`
             justify-content: center;

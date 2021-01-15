@@ -199,7 +199,9 @@ const DAOModal = () => {
               width: 100%;
             `}
             disabled={blocked || isEnabled}
-            onClick={() => sendTransaction(() => approve(ZAI.addr, ZAIS.addr))}
+            onClick={() =>
+              sendTransaction((cb) => approve(ZAI.addr, ZAIS.addr, cb))
+            }
           >
             Enable
           </BigButton>
