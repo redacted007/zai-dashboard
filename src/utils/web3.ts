@@ -70,6 +70,8 @@ export const checkConnectedAndGetAddress = async () => {
   return addresses[0]
 }
 
+const normalizeWeb3Number = (value) => new BigNumber(value).toString()
+
 /**
  * ERC20 Utilities
  */
@@ -88,7 +90,7 @@ export const approveSome = async (
   const account = await checkConnectedAndGetAddress()
   const oToken = new web3.eth.Contract(erc20Abi, tokenAddr)
   await oToken.methods
-    .approve(spender, amount)
+    .approve(spender, normalizeWeb3Number(amount))
     .send({ from: account })
     .on('transactionHash', (hash) => {
       cb ? cb(hash) : notify.hash(hash)

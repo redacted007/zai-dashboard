@@ -118,7 +118,7 @@ const SwapModal = () => {
           ) : (
             <EnableTout
               copy={
-                allowance.gt(100)
+                allowance.gte(100)
                   ? `Ready to swap ${formatBN(allowance)} ZAI for ${formatBN(
                       allowance.div(100),
                     )} ZAIv2`
