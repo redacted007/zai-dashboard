@@ -8,7 +8,8 @@ const epochPeriod = 1800
 const epochformatted = () => {
   const unixTimeSec = Math.floor(Date.now() / 1000)
   const diff = unixTimeSec - epochStart
-  const epoch = Math.floor(diff / epochPeriod)
+
+  const epoch = Math.max(Math.floor(diff / epochPeriod), 0)
   const rest = diff % epochPeriod
 
   const epochMinute = Math.floor(rest / 60)
