@@ -205,7 +205,6 @@ const DashboardOverview = () => {
               `}
             />
             <Figure num={totalTokens} unit="" round={0} />
-            {/* <span>{totalTokens && formatBN(totalTokens, 0)}</span> */}
           </SupplyTitle>
 
           <Spacer size={20} />
@@ -218,7 +217,7 @@ const DashboardOverview = () => {
               font-size: ${rem(20)};
             `}
           >
-            {expansion.gt(0) || true ? 'Expansion' : 'Debt'}
+            {expansion.gt(0) || true ? 'brrrrrrrr' : 'Debt'}
           </Title>
           <Spacer size={24} />
         </Block>
