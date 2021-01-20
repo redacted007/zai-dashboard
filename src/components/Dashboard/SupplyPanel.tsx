@@ -88,7 +88,7 @@ const SupplyPanel = () => {
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      Trade Zai
+                      Buy ZAIv2
                     </a>
                     )
                   </span>

@@ -6,8 +6,8 @@ import {
   Spacer,
   Seperator,
   Flex,
-  P,
   LinkButton,
+  BigButton,
 } from '../../components/Elements'
 
 import Page from '../../components/Page'
@@ -18,12 +18,15 @@ import LiquidityPanel from './LiquidityPanel'
 
 import { mq } from '../../styles'
 import Panel from '../Panel'
+import { UNI } from '../../constants/tokens'
 
 const TwoCol = styled(Flex)`
   ${mq.mobile} {
     flex-wrap: wrap;
   }
 `
+
+const AButton = BigButton.withComponent('a')
 
 const Dashboard = () => {
   return (
@@ -32,10 +35,16 @@ const Dashboard = () => {
         <Panel heading="Swap">
           <TwoCol>
             <Col>
-              <P>Swap ZAI for ZAIv2</P>
+              <LinkButton to="/dashboard/swap">Swap ZAI for ZAIv2</LinkButton>
             </Col>
+            <Spacer col size={30} />
             <Col>
-              <LinkButton to="/dashboard/swap">Manage Swap</LinkButton>
+              <AButton
+                href={`https://info.uniswap.org/pair/${UNI.addr}`}
+                target="_blank"
+              >
+                Buy ZAIv2
+              </AButton>
             </Col>
           </TwoCol>
         </Panel>
