@@ -36,7 +36,7 @@ enum Stages {
 }
 
 const DAOModal = () => {
-  const { redeemable, coupons } = useZaiData()
+  const { redeemable, totalDebt, coupons } = useZaiData()
   const { allowance, balance } = useUserData()
   const couponBalance = coupons
 
