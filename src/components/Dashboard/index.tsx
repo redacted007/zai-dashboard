@@ -6,7 +6,6 @@ import {
   Spacer,
   Seperator,
   Flex,
-  LinkButton,
   BigButton,
 } from '../../components/Elements'
 
