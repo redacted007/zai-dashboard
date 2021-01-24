@@ -32,12 +32,8 @@ const Dashboard = () => {
   return (
     <Page>
       <TwoCol>
-        <Panel heading="Swap">
+        <Panel heading="Buy">
           <TwoCol>
-            <Col>
-              <LinkButton to="/dashboard/swap">Swap ZAI for ZAIv2</LinkButton>
-            </Col>
-            <Spacer col size={30} />
             <Col>
               <AButton
                 href={`https://info.uniswap.org/pair/${UNI.addr}`}
@@ -45,6 +41,10 @@ const Dashboard = () => {
               >
                 Buy ZAIv2
               </AButton>
+            </Col>
+            <Spacer col size={30} />
+            <Col>
+
             </Col>
           </TwoCol>
         </Panel>
