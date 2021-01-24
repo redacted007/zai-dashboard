@@ -21,7 +21,6 @@ import { approve, purchaseCoupons } from '../utils/web3'
 import { ZAI, ZAIS } from '../constants/tokens'
 
 import { toBaseUnitBN, toTokenUnitsBN } from '../utils/number'
-import { frozenOrLocked } from '../utils'
 
 import { formInputAtomFamily, FigureInput, ActionLabel } from './Forms'
 import Figure, { FigurePercent } from './Figure'
@@ -38,11 +37,10 @@ enum Stages {
 
 const DAOModal = () => {
   const { redeemable, coupons } = useZaiData()
+  const { allowance, balance } = useUserData()
   const couponBalance = coupons
-  const { allowance, staged, status } = useUserData()
 
   const isEnabled = allowance.comparedTo(MAX_UINT256) === 0
-  const isFluid = !frozenOrLocked(status)
 
   const currentTab =
     useRecoilValue(tabStateAtom(TAB_GROUP_NAME)) || Stages.Purchase
@@ -54,7 +52,7 @@ const DAOModal = () => {
 
   const tabMap = {
     [Stages.Purchase]: {
-      max: coupons,
+      max: balance.gte(totalDebt) ? totalDebt : balance,
       label: 'Purchase',
       action: (value: BigNumber) =>
         sendTransaction((cb) =>
@@ -64,7 +62,7 @@ const DAOModal = () => {
 
     [Stages.Redeem]: {
       label: 'Redeem',
-      max: staged,
+      max: redeemable,
       action: (value: BigNumber) => console.log('should not get here'),
     },
   }
@@ -75,7 +73,6 @@ const DAOModal = () => {
     formValue &&
     new BigNumber(formValue).lte(max) &&
     new BigNumber(formValue).gt(0)
-  const locked = isFluid
 
   const [premium, setPremium] = useState(new BigNumber(0))
   const updatePremium = async (purchaseAmount) => {
@@ -86,7 +83,8 @@ const DAOModal = () => {
     const purchaseAmountBase = toBaseUnitBN(purchaseAmount, ZAI.decimals)
     const premium = await getCouponPremium(ZAIS.addr, purchaseAmountBase)
     const premiumFormatted = toTokenUnitsBN(premium, ZAI.decimals)
-    setPremium(premiumFormatted)
+    const premiumPercent = premiumFormatted.div(purchaseAmount).times(100)
+    setPremium(premiumPercent)
   }
 
   useEffect(() => {
@@ -110,7 +108,6 @@ const DAOModal = () => {
           ) : currentTab === Stages.Purchase ? (
             <React.Fragment>
               <FigureInput
-                disabled={isFluid}
                 name={formName}
                 max={max || new BigNumber(0)}
                 unit="ZAI"
@@ -171,17 +168,16 @@ const DAOModal = () => {
             css={css`
               width: 100%;
             `}
-            disabled={blocked || !valueOk || locked}
-            invalid={(blocked || !valueOk) && !locked}
+            disabled={blocked || !valueOk}
+            invalid={blocked || !valueOk}
             onClick={() => {
               action(formValue)
             }}
           >
-            <ActionLabel label={label} value={formValue} locked={isFluid} />
+            <ActionLabel label={label} value={formValue} />
           </BigButton>
         ) : null}
 
-        <Spacer />
         <TableRow
           left="Purchased"
           right={<Figure num={couponBalance} round={2} />}
