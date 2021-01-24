@@ -177,7 +177,8 @@ const DAOModal = () => {
             <ActionLabel label={label} value={formValue} />
           </BigButton>
         ) : null}
-
+        
+        <Spacer />
         <TableRow
           left="Purchased"
           right={<Figure num={couponBalance} round={2} />}
